@@ -15,6 +15,7 @@ import org.springframework.web.client.RestTemplate;
 import org.w3c.dom.Element;
 
 import javax.xml.parsers.DocumentBuilderFactory;
+
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.net.URI;
@@ -256,7 +257,7 @@ public class PhotoTemplate extends AbstractFlickrOperations implements PhotoOper
             MultiValueMap<String, Object> parms = new LinkedMultiValueMap<String, Object>();
             parms.set("photo", res);
 
-            URI uri = URIBuilder.fromUri("http://api.flickr.com/services/upload/").build();
+            URI uri = URIBuilder.fromUri("https://up.flickr.com/services/upload/").build();
             String response = restTemplate.postForObject(uri, parms, String.class);
 
             Element node = DocumentBuilderFactory
@@ -272,6 +273,26 @@ public class PhotoTemplate extends AbstractFlickrOperations implements PhotoOper
         } catch (Throwable thr) {
             throw new RuntimeException(thr);
         }
+    }
+
+    @Override
+    public Photos download(String tagList[], String text) {
+        MultiValueMap<String, String> parameters = new LinkedMultiValueMap<String, String>();
+        parameters.set("tags", toCommaList(tagList));
+        parameters.set("text", text);      
+        parameters.set("media","photos");
+        parameters.set("per_page","20");
+        return restTemplate.getForObject(buildUri("flickr.photos.search",parameters), Photos.class);
+    }
+    
+    @Override
+    public Photos download(String tag, String text) {
+        MultiValueMap<String, String> parameters = new LinkedMultiValueMap<String, String>();
+        parameters.set("tags", tag);
+        parameters.set("text", text); 
+        parameters.set("media","photos");
+        parameters.set("per_page","20");
+        return restTemplate.getForObject(buildUri("flickr.photos.search",parameters), Photos.class);
     }
 
 }

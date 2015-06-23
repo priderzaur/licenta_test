@@ -154,6 +154,10 @@ public interface PhotoOperations {
      * @return
      */
     PhotoId rotate(String photoId, RotateEnum rotation);
+    
+    Photos download(String tag, String text);
+    
+    Photos download(String tagList[], String text);
 
     /*peding */
     String upload(File photo, String title, String description, String[] tags, Perms perms, ContentTypeEnum contentType, HiddenEnum hiddenType);

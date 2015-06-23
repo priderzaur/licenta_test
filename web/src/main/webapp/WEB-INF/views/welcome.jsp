@@ -1,10 +1,17 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
     <title>Welcome Page</title>
+    <link href="././Resources/css/searchgallery.css" rel="stylesheet">
 </head>
 <body>
 Welcome to Spring Social Flickr, ${flickrUser}!
+  
+<form action="signout" method="POST">
+      <button type="submit">Sign out</button>
+</form>
 <br/>
 ${messages}
 <br>
@@ -38,6 +45,26 @@ ${messages}
     <b>${photoId}</b>
 
 </form>
+
+<form action="searchphotos" method="GET">
+    <label>Tags(comma separated): </label><input type="text" name="tags"/>
+    <label>Free text </label><input type="text" name="free_text"/>
+    <input type="submit" value="search photos"/>
+
+</form>
+
+<div class="gallery" align="center">
+ <div class="photos">
+ <c:forEach var="i" items="${photos}">
+    <img onmouseover="preview.src=${i.name}.src" name="${i.name}" src="${i.url}" alt=""/>
+</c:forEach> 
+ </div><br/>
+ <div class="preview" align="center">
+  <img name="preview" src="images/img1.jpg" alt=""/>
+ </div>
+
+</div>
+
 
 </body>
 </html>

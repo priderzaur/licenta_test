@@ -6,16 +6,16 @@ Once you've done that, check your database (configured in MainConfig)'s userconn
 
 #----------------------------------
 
-clientId=Your client ID
+clientId=ce3dcf5f323079ca125f2676763da60c
 clientSecret=your client Secret
 
 accessToken=access Token
 accessTokenSecret=access token secret 
 
 
-dataSource.user=photos
+dataSource.user=postgres
 dataSource.db=photos
-dataSource.password=photos
+dataSource.password=add1ct
 dataSource.host=127.0.0.1
 dataSource.driverClassName=org.postgresql.Driver
 dataSource.port=5432

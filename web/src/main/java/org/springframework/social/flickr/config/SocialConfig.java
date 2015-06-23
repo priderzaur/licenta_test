@@ -42,7 +42,7 @@ public class SocialConfig {
 
     @Bean
     public ConnectionFactoryLocator connectionFactoryLocator() {
-    	System.out.println("inside the connection facotry locator");
+    	System.out.println("inside the connection factory locator");
         ConnectionFactoryRegistry registry = new ConnectionFactoryRegistry();
         registry.addConnectionFactory(new FlickrConnectionFactory(
             environment.getProperty("clientId"),
@@ -88,7 +88,6 @@ public class SocialConfig {
         providerSignInController.setPostSignInUrl("/welcome");
         return providerSignInController;
 	}
-	
 	 
 	@Bean 
 	public CommonsMultipartResolver multipartResolver(){
