@@ -93,7 +93,7 @@ public class SocialConfig {
 	public CommonsMultipartResolver multipartResolver(){
 		logger.debug("calling CommonsMultipartResolver");
 		CommonsMultipartResolver c = new CommonsMultipartResolver();
-		c.setMaxUploadSize(100 * 1000);
+		c.setMaxUploadSize(1000 * 1000);
 		return c;
 	}
 }
