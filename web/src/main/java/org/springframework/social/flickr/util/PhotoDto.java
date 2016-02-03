@@ -18,10 +18,10 @@ public class PhotoDto {
         this.url = url;
     }
     public String getName() {
-        return id;
+        return name;
     }
     public void setName(String name) {
-        this.id = name;
+        this.name = name;
     }
     
 }
